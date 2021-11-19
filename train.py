@@ -1,3 +1,25 @@
+train.py
+Who has access
+T
+System properties
+Type
+Text
+Size
+16 KB
+Storage used
+16 KBOwned by Hanoi University of Science and Technology
+Location
+deep-text-recognition-benchmark
+Owner
+Thành Lê Tuấn
+Modified
+Aug 23, 2021 by Thành Lê Tuấn
+Opened
+6:07 PM by me
+Created
+Aug 21, 2021
+No description
+Viewers can download
 import os
 import sys
 import time
@@ -246,10 +268,14 @@ if __name__ == '__main__':
     parser.add_argument('--grad_clip', type=float, default=5, help='gradient clipping value. default=5')
     parser.add_argument('--baiduCTC', action='store_true', help='for data_filtering_off mode')
     """ Data processing """
-    parser.add_argument('--select_data', type=str, default='MJ-ST',
-                        help='select training data (default is MJ-ST, which means MJ and ST used as training data)')
-    parser.add_argument('--batch_ratio', type=str, default='0.5-0.5',
-                        help='assign ratio for each selected data in the batch')
+    # parser.add_argument('--select_data', type=str, default='MJ-ST',
+    #                     help='select training data (default is MJ-ST, which means MJ and ST used as training data)')
+    # parser.add_argument('--batch_ratio', type=str, default='0.5-0.5',
+    #                     help='assign ratio for each selected data in the batch')
+    parser.add_argument('--select_data', type=str, default='/', 
+                        help='select training data (default is MJ-ST, which means MJ and ST used as training data)') 
+    parser.add_argument('--batch_ratio', type=str, default='1', 
+                        help='assign ratio for each selected data in the batch') 
     parser.add_argument('--total_data_usage_ratio', type=str, default='1.0',
                         help='total data usage ratio, this ratio is multiplied to total number of data.')
     parser.add_argument('--batch_max_length', type=int, default=25, help='maximum-label-length')
@@ -257,7 +283,7 @@ if __name__ == '__main__':
     parser.add_argument('--imgW', type=int, default=100, help='the width of the input image')
     parser.add_argument('--rgb', action='store_true', help='use rgb input')
     parser.add_argument('--character', type=str,
-                        default='0123456789abcdefghijklmnopqrstuvwxyz', help='character label')
+                        default="""ầỏỉờbdúnuyỷủổrkxlqằwịộc,ẹựàề#đg;a)ĩv5iìừùâý6ễh0ọ/mỵẽ9ẵứ>ỗ"ã?ă8!ấ`ảỳf&ạ(3êửếz2ô4|ụểõ+1éởốồữậưũepỡó.ẩá“~ỹ=oệèơẻ:òs7íj”ợ%ặẳớ*ắ' tẫ-""", help='character label')
     parser.add_argument('--sensitive', action='store_true', help='for sensitive character mode')
     parser.add_argument('--PAD', action='store_true', help='whether to keep ratio then pad for image resize')
     parser.add_argument('--data_filtering_off', action='store_true', help='for data_filtering_off mode')
@@ -286,7 +312,8 @@ if __name__ == '__main__':
     """ vocab / character number configuration """
     if opt.sensitive:
         # opt.character += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        opt.character = string.printable[:-6]  # same with ASTER setting (use 94 char).
+        # opt.character = string.printable[:-6]  # same with ASTER setting (use 94 char).
+        opt.character = """ ĐịỌwÈỲơếềửcvrnỚọJhƠờỦLđẬồ.ễMÍẻẽ*ằE6ầỆẶ+Ó=ãỡàuớứK“ậòOỴỞừVÂXẼ&ẳƯỄạAấZ\'!ặCẢQỬIèlốỰéắTkBxPaẾổỏỒăjôYÉỜộỖ#>ÙỮ:Ấfì2eểù8(9Ẹ;ÌSẮủÊỨẪẩẵ57ỷÔỹHgmÀẠỢợ|3tỀF/sÃẦỤỠĨ0ỉâNRỪ”iDỳ1?úÁĂũ"ỊU~WẫzGưẰyóỵb,ỘỸ4qụdỔÚp)õẹêoệỗÝ%ảựỎáĩýởỂ`ỐẺíỈữẨ-"""
 
     """ Seed and GPU setting """
     # print("Random Seed: ", opt.manualSeed)
