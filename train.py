@@ -1,25 +1,3 @@
-train.py
-Who has access
-T
-System properties
-Type
-Text
-Size
-16 KB
-Storage used
-16 KBOwned by Hanoi University of Science and Technology
-Location
-deep-text-recognition-benchmark
-Owner
-Thành Lê Tuấn
-Modified
-Aug 23, 2021 by Thành Lê Tuấn
-Opened
-6:07 PM by me
-Created
-Aug 21, 2021
-No description
-Viewers can download
 import os
 import sys
 import time
