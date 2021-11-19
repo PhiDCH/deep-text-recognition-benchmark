@@ -34,6 +34,11 @@ test/word_3.png A
 2. Modify `--select_data`, `--batch_ratio`, and `opt.character`, see [this issue](https://github.com/clovaai/deep-text-recognition-benchmark/issues/85).
 
 ### Training and evaluation
+0. Download prtrain model
+```
+gdown --id 1GXFr31EFqnFPjgITJNklqLO3Dholo6VW -O pretrain.pth
+```
+
 1. Train CRNN[10] model
 ```
 python -W ignore train.py \
@@ -47,7 +52,7 @@ python -W ignore train.py \
 --batch_max_length 80 \
 --valInterval 500 \
 --exp_name CRNN_batch1_sens \
---saved_model /content/drive/MyDrive/MyComputer/freelance/checkpoint/textRecog/best_accuracy.pth
+--saved_model pretrain.pth
 ```
 
 ### Arguments
@@ -63,4 +68,6 @@ python -W ignore train.py \
 * `--Prediction`: select Prediction module [CTC | Attn].
 * `--saved_model`: assign saved model to evaluation.
 * `--benchmark_all_eval`: evaluate with 10 evaluation dataset versions, same with Table 1 in our paper.
+
+See [Colab](https://colab.research.google.com/drive/1CSdiN9E0VcZq-2ppHbaeJeS0RN8REmun?usp=sharing).
 
